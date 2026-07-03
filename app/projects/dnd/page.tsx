@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import gs1 from "@/public/images/gs1.png";
-import CylinderGallery from "@/components/cylinder-gallery";
+import dnd1 from "@/public/images/dnd1.png";
+import CylinderGallery from "@/components/cylinder-gallery-dnd";
 
-
-export default function GymSchedulePage() {
+export default function MeaCulpaPage() {
   return (
     <main className="min-h-screen bg-gray-950 text-white">
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
@@ -19,16 +18,17 @@ export default function GymSchedulePage() {
         <div className="mt-12 grid items-center gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <div>
             <span className="rounded-full bg-gray-800 px-3 py-1 text-sm text-indigo-300">
-              GYM-SCHEDULE
+              MEA CULPA
             </span>
 
             <h1 className="mt-6 text-4xl font-semibold md:text-6xl">
-              Gym Schedule
+              Mea Culpa
             </h1>
 
             <p className="mt-6 text-lg text-indigo-200/65">
-              Web platform for managing gym schedules, classes,
-              trainers, and facility availability.
+              An online RPG platform focused on a digital role-playing experience
+              featuring guilds, trading, epic adventures, and mechanics designed to
+              strengthen interaction among players.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -42,33 +42,33 @@ export default function GymSchedulePage() {
                 Tailwind CSS
               </span>
               <span className="rounded-full bg-gray-800 px-3 py-1 text-sm">
-                Supabase
+                RPG Online
               </span>
             </div>
 
             <div className="mt-10 flex gap-4">
               <a
-                href="https://github.com/gaava21/Web-Horarios"
+                href="https://meaculpadnd.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn bg-indigo-600 text-white hover:bg-indigo-500"
               >
-                View code
+                Visit the site
               </a>
 
               {/* <a
                 href="#"
                 className="btn bg-gray-800 text-white hover:bg-gray-700"
               >
-                Watch the demo
+                Ver código
               </a> */}
             </div>
           </div>
 
           <div className="relative">
             <Image
-              src={gs1}
-              alt="Gym Schedule"
+              src={dnd1}
+              alt="Mea Culpa RPG online platform"
               width={1100}
               height={750}
               className="rounded-2xl border border-gray-800 shadow-2xl"
@@ -80,31 +80,38 @@ export default function GymSchedulePage() {
           <h2 className="text-3xl font-semibold">About the Project</h2>
 
           <p className="mt-4 max-w-3xl text-indigo-200/65">
-            This project makes it possible to organize class schedules, manage
-            users, view available spots, and improve the internal planning
-            of a gym.
+            Mea Culpa is an online role-playing platform designed to create an
+            immersive experience set in a fantasy universe. The
+            project incorporates elements such as guilds, trade, and adventures,
+            allowing users to participate in a digital community
+            focused on exploration, progression, and interaction among
+            players.
           </p>
         </section>
 
         <section className="mt-16 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
-            <h3 className="text-xl font-semibold">Schedule Management</h3>
+            <h3 className="text-xl font-semibold">Guild System</h3>
             <p className="mt-3 text-indigo-200/65">
-              It allows you to create, edit, and view class schedules.
+              It allows you to organize the player experience through groups,
+              collaboration, and participation within a role-playing community.
             </p>
           </div>
 
           <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
-            <h3 className="text-xl font-semibold">Quota Control</h3>
+            <h3 className="text-xl font-semibold">In-game trading</h3>
             <p className="mt-3 text-indigo-200/65">
-              Check availability to avoid overbooking.
+              It incorporates exchange mechanisms that strengthen the
+              domestic economy and interaction among platform users.
             </p>
           </div>
 
           <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
-            <h3 className="text-xl font-semibold">Responsive design</h3>
+            <h3 className="text-xl font-semibold">Epic Adventures</h3>
             <p className="mt-3 text-indigo-200/65">
-              Optimized for computers, tablets, and cell phones.
+              It offers a narrative experience focused on exploration,
+              fantasy, character development, and participation in
+              online role-playing campaigns.
             </p>
           </div>
         </section>

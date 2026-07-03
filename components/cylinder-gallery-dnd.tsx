@@ -3,13 +3,22 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import gs1 from "@/public/images/gs1.png";
-import gs2 from "@/public/images/gs2.png";
-import gs3 from "@/public/images/gs3.png";
-import gs4 from "@/public/images/gs4.png";
-import gs5 from "@/public/images/gs5.png";
+import dnd1 from "@/public/images/dnd1.png";
+import dnd2 from "@/public/images/dnd2.png";
+import dnd3 from "@/public/images/dnd3.png";
+import dnd4 from "@/public/images/dnd4.png";
+import dnd5 from "@/public/images/dnd5.png";
+import dnd6 from "@/public/images/dnd6.png";
+import dnd7 from "@/public/images/dnd7.png";
+import dnd8 from "@/public/images/dnd8.png";
+import dnd9 from "@/public/images/dnd9.png";
+import dnd10 from "@/public/images/dnd10.png";
+import dnd11 from "@/public/images/dnd11.png";
+import dnd12 from "@/public/images/dnd12.png";
+import dnd13 from "@/public/images/dnd13.png";
 
-const images = [gs1, gs2, gs3, gs4, gs5];
+
+const images = [dnd1, dnd2, dnd3, dnd4, dnd5, dnd6, dnd7, dnd8, dnd9, dnd10, dnd11, dnd12, dnd13];
 
 export default function CylinderGallery() {
   const [index, setIndex] = useState(0);

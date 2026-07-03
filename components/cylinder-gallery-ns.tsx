@@ -3,13 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import gs1 from "@/public/images/gs1.png";
-import gs2 from "@/public/images/gs2.png";
-import gs3 from "@/public/images/gs3.png";
-import gs4 from "@/public/images/gs4.png";
-import gs5 from "@/public/images/gs5.png";
+import ns1 from "@/public/images/ns1.png";
+import ns2 from "@/public/images/ns2.png";
+import ns3 from "@/public/images/ns3.png";
+import ns4 from "@/public/images/ns4.png";
+import ns5 from "@/public/images/ns5.png";
+import ns6 from "@/public/images/ns6.png";
 
-const images = [gs1, gs2, gs3, gs4, gs5];
+
+const images = [ns1, ns2, ns3, ns3, ns4, ns5, ns6];
 
 export default function CylinderGallery() {
   const [index, setIndex] = useState(0);

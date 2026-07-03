@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import gs1 from "@/public/images/gs1.png";
-import CylinderGallery from "@/components/cylinder-gallery";
+import ns1 from "@/public/images/ns1.png";
+import CylinderGallery from "@/components/cylinder-gallery-ns";
 
-
-export default function GymSchedulePage() {
+export default function NovaSitePage() {
   return (
     <main className="min-h-screen bg-gray-950 text-white">
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
@@ -19,16 +18,18 @@ export default function GymSchedulePage() {
         <div className="mt-12 grid items-center gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <div>
             <span className="rounded-full bg-gray-800 px-3 py-1 text-sm text-indigo-300">
-              GYM-SCHEDULE
+              NOVASITE
             </span>
 
             <h1 className="mt-6 text-4xl font-semibold md:text-6xl">
-              Gym Schedule
+              NovaSite
             </h1>
 
             <p className="mt-6 text-lg text-indigo-200/65">
-              Web platform for managing gym schedules, classes,
-              trainers, and facility availability.
+              A digital platform focused on developing modern web solutions,
+              custom applications, e-commerce, and scalable enterprise
+              systems for businesses seeking to strengthen their
+              technological presence.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -42,33 +43,33 @@ export default function GymSchedulePage() {
                 Tailwind CSS
               </span>
               <span className="rounded-full bg-gray-800 px-3 py-1 text-sm">
-                Supabase
+                Software Development
               </span>
             </div>
 
             <div className="mt-10 flex gap-4">
               <a
-                href="https://github.com/gaava21/Web-Horarios"
+                href="https://www.novacr.site/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn bg-indigo-600 text-white hover:bg-indigo-500"
               >
-                View code
+                Visit the site
               </a>
 
               {/* <a
                 href="#"
                 className="btn bg-gray-800 text-white hover:bg-gray-700"
               >
-                Watch the demo
+                View code
               </a> */}
             </div>
           </div>
 
           <div className="relative">
             <Image
-              src={gs1}
-              alt="Gym Schedule"
+              src={ns1}
+              alt="NovaSite website"
               width={1100}
               height={750}
               className="rounded-2xl border border-gray-800 shadow-2xl"
@@ -80,31 +81,38 @@ export default function GymSchedulePage() {
           <h2 className="text-3xl font-semibold">About the Project</h2>
 
           <p className="mt-4 max-w-3xl text-indigo-200/65">
-            This project makes it possible to organize class schedules, manage
-            users, view available spots, and improve the internal planning
-            of a gym.
+            NovaSite is a web platform designed to showcase
+            software development services in a professional, modern, and visually
+            appealing way. The site highlights solutions such as web development,
+            e-commerce, technical maintenance, and custom backend development, as well
+            as featuring notable projects, the team, and contact
+            information for potential clients.
           </p>
         </section>
 
         <section className="mt-16 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
-            <h3 className="text-xl font-semibold">Schedule Management</h3>
+            <h3 className="text-xl font-semibold">Digital Services</h3>
             <p className="mt-3 text-indigo-200/65">
-              It allows you to create, edit, and view class schedules.
+              It offers services such as web development, online stores,
+              technical maintenance, and backend solutions tailored to each
+              business.
             </p>
           </div>
 
           <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
-            <h3 className="text-xl font-semibold">Quota Control</h3>
+            <h3 className="text-xl font-semibold">Modern design</h3>
             <p className="mt-3 text-indigo-200/65">
-              Check availability to avoid overbooking.
+              It features an attractive, responsive visual interface designed to
+              convey innovation, trust, and professionalism.
             </p>
           </div>
 
           <div className="rounded-2xl border border-gray-800 bg-gray-900/50 p-6">
-            <h3 className="text-xl font-semibold">Responsive design</h3>
+            <h3 className="text-xl font-semibold">Business Approach</h3>
             <p className="mt-3 text-indigo-200/65">
-              Optimized for computers, tablets, and cell phones.
+              It makes it easy for visitors to learn about the team, view featured projects,
+              and contact the studio to get started on a digital solution.
             </p>
           </div>
         </section>
