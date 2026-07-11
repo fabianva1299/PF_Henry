@@ -9,7 +9,7 @@ import pbi3 from "@/public/images/pbi3.png";
 import pbi4 from "@/public/images/pbi4.png";
 import pbi5 from "@/public/images/pbi5.png";
 
-const images = [pbi1, pbi2, pbi3, pbi4, pbi5];
+const images = [pbi5, pbi1, pbi2, pbi3, pbi4];
 
 export default function CylinderGallery() {
   const [index, setIndex] = useState(0);

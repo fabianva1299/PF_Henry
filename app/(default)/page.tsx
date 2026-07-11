@@ -7,18 +7,16 @@ import PageIllustration from "@/components/page-illustration";
 import Hero from "@/components/profile-home";
 import Workflows from "@/components/workflows";
 import Features from "@/components/features";
-import Testimonials from "@/components/testimonials";
-import Cta from "@/components/cta";
+import Contact from "@/components/contact";
 
 export default function Home() {
   return (
-    <>
+    <div className="pt-16">
       <PageIllustration />
       <Workflows />
-      <Hero />
       <Features />
-      <Testimonials />
-      <Cta />
-    </>
+      <Contact />
+      <Hero />
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import ns1 from "@/public/images/pbi2.png";
+import pbi3 from "@/public/images/pbi3.png";
 import CylinderGallery from "@/components/cylinder-gallery-pbi";
 
 export default function NovaSitePage() {
@@ -70,7 +70,7 @@ export default function NovaSitePage() {
 
           <div className="relative">
             <Image
-              src={ns1}
+              src={pbi3}
               alt="NovaSite website"
               width={1100}
               height={750}

@@ -3,7 +3,7 @@ import ModalVideo from "@/components/modal-video";
 
 export default function profile() {
   return (
-    <section>
+    <section id="aboutme" className="scroll-mt-24">
       <div className="mx-auto max-w-md px-4 sm:px-6">
         {/* Hero content */}
         <div className="py-12 md:py-20">

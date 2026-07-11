@@ -118,3 +118,7 @@
   transform-style: preserve-3d;
   will-change: transform, opacity;
 }
+
+html {
+  scroll-behavior: smooth;
+}

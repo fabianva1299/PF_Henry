@@ -5,7 +5,7 @@ import Image from "next/image";
 import gs1 from "@/public/images/gs1.png";
 import ns1 from "@/public/images/ns1.png";
 import dnd1 from "@/public/images/dnd1.png";
-import pbi2 from "@/public/images/pbi2.png";
+import pbi3 from "@/public/images/pbi3.png";
 import Spotlight from "@/components/spotlight";
 import Link from "next/link";
 
@@ -37,7 +37,7 @@ export default function Workflows() {
     },
     {
       href: "/projects/pbi",
-      image: pbi2,
+      image: pbi3,
       alt: "POWER-BI",
       tag: "POWER-BI",
       description:
@@ -65,7 +65,7 @@ export default function Workflows() {
     projects[(index + 2) % projects.length],
   ];
   return (
-    <section>
+    <section id="projects" className="scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 md:pb-20">
           {/* Section header */}
