@@ -23,9 +23,9 @@ export default function Header() {
       ),
     },
     {
-      id: "languages",
-      labelKey: "languages",
-      href: "/#languages",
+      id: "technologies",
+      labelKey: "technologies",
+      href: "/#technologies",
       icon: (
         <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="16" height={16}>
           <path d="M6.5 3.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM9 6.855A3.502 3.502 0 0 0 8 0a3.5 3.5 0 0 0-1 6.855v1.656L5.534 9.65a3.5 3.5 0 1 0 1.229 1.578L8 10.267l1.238.962a3.5 3.5 0 1 0 1.229-1.578L9 8.511V6.855Zm2.303 4.74c.005-.005.01-.01.013-.016l.012-.016a1.5 1.5 0 1 1-.025.032ZM3.5 11A1.497 1.497 0 0 1 5 12.5 1.5 1.5 0 1 1 3.5 11Z" />

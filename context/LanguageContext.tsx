@@ -10,14 +10,14 @@ interface Translations {
     subtitle: string;
     categories: {
       projects: string;
-      languages: string;
+      technologies: string;
       getintouch: string;
       aboutme: string;
     };
   };
   header: {
     projects: string;
-    languages: string;
+    technologies: string;
     getintouch: string;
     aboutme: string;
   };
@@ -62,14 +62,14 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
       subtitle: "",
       categories: {
         projects: "Projects",
-        languages: "Languages",
+        technologies: "Technologies",
         getintouch: "Get In Touch",
         aboutme: "About Me"
       }
     },
     header: {
       projects: "Projects",
-      languages: "Languages",
+      technologies: "Technologies",
       getintouch: "Get In Touch",
       aboutme: "About Me"
     },
@@ -102,14 +102,14 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
       subtitle: "",
       categories: {
         projects: "Proyectos",
-        languages: "Lenguajes",
+        technologies: "Tecnologías",
         getintouch: "Contactos",
         aboutme: "Acerca de mi"
       }
     },
     header: {
       projects: "Proyectos",
-      languages: "Lenguajes",
+      technologies: "Technologies",
       getintouch: "Contactos",
       aboutme: "Acerca de mi"
     },

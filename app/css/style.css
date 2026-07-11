@@ -9,8 +9,8 @@
 }
 
 @theme {
-  --font-inter: var(--font-inter), sans-serif;
-  --font-nacelle: var(--font-nacelle), sans-serif;
+  --font-inter: var(--font-inter-next), sans-serif;
+  --font-handjet: 'Handjet', sans-serif;
 
   --text-xs: 0.8125rem;
   --text-xs--line-height: 1.5384;
@@ -53,20 +53,24 @@
       transform: scaleY(5);
       opacity: 0;
     }
+
     10% {
       opacity: 0.8;
     }
+
     20% {
       top: 100%;
       transform: scaleY(10);
       opacity: 0;
     }
+
     100% {
       top: 100%;
       transform: scaleY(1);
       opacity: 0;
     }
   }
+
   @keyframes gradient {
     to {
       background-position: 200% center;
@@ -121,4 +125,16 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-handjet {
+  font-family: var(--font-handjet), sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
 }

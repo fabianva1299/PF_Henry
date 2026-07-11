@@ -125,8 +125,8 @@ const categoryOptions = [
   },
   {
     id: 2,
-    labelKey: "languages",
-    href:"#languages",
+    labelKey: "technologies",
+    href:"#technologies",
     icon: (
       <svg
         className="fill-current"

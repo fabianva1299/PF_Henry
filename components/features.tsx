@@ -1,192 +1,320 @@
-import Image from "next/image";
-import BlurredShapeGray from "@/public/images/blurred-shape-gray.svg";
-import BlurredShape from "@/public/images/blurred-shape.svg";
-import FeaturesImage from "@/public/images/features.png";
+import type { IconType } from "react-icons";
+import { FiBarChart2, FiCloud, FiDatabase, FiFigma, FiGitBranch, FiMonitor, FiTrendingUp } from "react-icons/fi";
+
+import {
+  SiBootstrap,
+  SiCss,
+  SiFigma,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiR,
+  SiReact,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+} from "react-icons/si";
+
+interface Technology {
+  name: string;
+  icon: IconType;
+  iconClassName: string;
+}
+
+interface TechnologyCategory {
+  title: string;
+  description: string;
+  technologies: Technology[];
+}
+
+const technologyCategories: TechnologyCategory[] = [
+  {
+    title: "FrontEnd",
+    description:
+      "Technologies I use to create responsive and interactive interfaces.",
+    technologies: [
+      {
+        name: "HTML5",
+        icon: SiHtml5,
+        iconClassName: "text-orange-500",
+      },
+      {
+        name: "CSS3",
+        icon: SiCss,
+        iconClassName: "text-blue-500",
+      },
+      {
+        name: "JavaScript",
+        icon: SiJavascript,
+        iconClassName: "text-yellow-400",
+      },
+      {
+        name: "TypeScript",
+        icon: SiTypescript,
+        iconClassName: "text-blue-400",
+      },
+      {
+        name: "React",
+        icon: SiReact,
+        iconClassName: "text-cyan-400",
+      },
+      {
+        name: "Next.js",
+        icon: SiNextdotjs,
+        iconClassName: "text-gray-100",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: SiTailwindcss,
+        iconClassName: "text-cyan-400",
+      },
+      {
+        name: "Bootstrap",
+        icon: SiBootstrap,
+        iconClassName: "text-purple-500",
+      },
+    ],
+  },
+  {
+    title: "BackEnd & Databases",
+    description:
+      "Tools for APIs, business logic, authentication and data management.",
+    technologies: [
+      {
+        name: "Python",
+        icon: SiPython,
+        iconClassName: "text-yellow-300",
+      },
+      {
+        name: "Node.js",
+        icon: SiNodedotjs,
+        iconClassName: "text-green-500",
+      },
+      {
+        name: "MySQL",
+        icon: FiDatabase,
+        iconClassName: "text-blue-400",
+      },
+      {
+        name: "PostgreSQL",
+        icon: FiDatabase,
+        iconClassName: "text-blue-300",
+      },
+      {
+        name: "Supabase",
+        icon: FiDatabase,
+        iconClassName: "text-emerald-400",
+      },
+    ],
+  },
+  {
+    title: "Data Analytics & BI",
+    description:
+      "Technologies I use to transform data into actionable information.",
+    technologies: [
+      {
+        name: "Power BI",
+        icon: FiBarChart2,
+        iconClassName: "text-yellow-400",
+      },
+      {
+        name: "Excel",
+        icon: FiBarChart2,
+        iconClassName: "text-emerald-500",
+      },
+      {
+        name: "Tableau",
+        icon: FiBarChart2,
+        iconClassName: "text-blue-300",
+      },
+      {
+        name: "Python",
+        icon: SiPython,
+        iconClassName: "text-yellow-300",
+      },
+      {
+        name: "R",
+        icon: FiTrendingUp,
+        iconClassName: "text-blue-400",
+      },
+      {
+        name: "SQL",
+        icon: FiDatabase,
+        iconClassName: "text-indigo-300",
+      },
+    ],
+  },
+  {
+    title: "Tools & Platforms",
+    description:
+      "Platforms that support my development, design and deployment workflow.",
+    technologies: [
+      {
+        name: "Git",
+        icon: FiGitBranch,
+        iconClassName: "text-orange-500",
+      },
+      {
+        name: "GitHub",
+        icon: SiGithub,
+        iconClassName: "text-gray-100",
+      },
+      {
+        name: "VS Code",
+        icon: FiMonitor,
+        iconClassName: "text-blue-400",
+      },
+      {
+        name: "Figma",
+        icon: FiFigma,
+        iconClassName: "text-pink-400",
+      },
+      {
+        name: "Vercel",
+        icon: SiVercel,
+        iconClassName: "text-gray-100",
+      },
+      {
+        name: "Azure",
+        icon: FiCloud,
+        iconClassName: "text-blue-400",
+      },
+    ],
+  },
+];
 
 export default function Features() {
   return (
-    <section id="languages" className="relative scroll-mt-24">
+    <section
+      id="technologies"
+      className="relative scroll-mt-24 overflow-hidden"
+    >
+      {/* Background decoration */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 -z-10 -mt-20 -translate-x-1/2"
         aria-hidden="true"
       >
-        <Image
-          className="max-w-none"
-          src={BlurredShapeGray}
+        <img
+          className="max-w-none opacity-70"
+          src="/images/blurred-shape-gray.svg"
           width={760}
           height={668}
-          alt="Blurred shape"
+          alt=""
         />
       </div>
+
       <div
         className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -mb-80 -translate-x-[120%] opacity-50"
         aria-hidden="true"
       >
-        <Image
+        <img
           className="max-w-none"
-          src={BlurredShape}
+          src="/images/blurred-shape.svg"
           width={760}
           height={668}
-          alt="Blurred shape"
+          alt=""
         />
       </div>
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,--theme(--color-slate-400/.25),transparent)1] md:py-20">
-          {/* Section header */}
-          <div className="mx-auto max-w-3xl pb-4 text-center md:pb-12">
-            <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-indigo-200/50">
-              <span className="inline-flex bg-linear-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
-                Languages
+        <div className="border-t border-white/10 py-12 md:py-20">
+          {/* Section heading */}
+          <div className="mx-auto max-w-3xl pb-10 text-center md:pb-14">
+            <div className="mb-4 inline-flex items-center gap-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-300/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-300/50">
+              <span className="font-handjet text-lg font-semibold uppercase tracking-[0.18em] text-indigo-300">
+                My Stack
               </span>
             </div>
-            <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-nacelle text-3xl font-semibold text-transparent md:text-4xl">
-              Built for modern product teams
+
+            <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-handjet text-4xl font-bold text-transparent md:text-5xl">
+              Technologies
             </h2>
-            <p className="text-lg text-indigo-200/65">
-              Open AI reads and understands your files, and with nothing more
-              than a single line of feedback, so you can go further than the
-              speed of thought.
+
+            <p className="mx-auto max-w-2xl font-inter text-base leading-relaxed text-indigo-200/65 md:text-lg">
+              Technologies, frameworks and tools I use to build applications,
+              analyze information and create data-driven solutions.
             </p>
           </div>
-          <div className="flex justify-center pb-4 md:pb-12" data-aos="fade-up">
-            <Image
-              className="max-w-none"
-              src={FeaturesImage}
-              width={1104}
-              height={384}
-              alt="Features"
-            />
+          <div className="mb-8 flex items-center gap-3">
+            <div className="flex h-7 w-7 items-center justify-center rounded border border-indigo-300 text-indigo-200">
+              <span className="font-handjet text-lg">›</span>
+            </div>
+
+            <h2 className="font-handjet text-3xl font-bold text-gray-100">
+              Technologies
+            </h2>
           </div>
-          {/* Items */}
-          <div className="mx-auto grid max-w-sm gap-12 sm:max-w-none sm:grid-cols-2 md:gap-x-14 md:gap-y-16 lg:grid-cols-3">
-            <article>
-              <svg
-                className="mb-3 fill-indigo-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
+
+          {/* Technology categories */}
+          <div className="space-y-6">
+            {technologyCategories.map((category, categoryIndex) => (
+              <article
+                key={category.title}
+                data-aos="fade-up"
+                data-aos-delay={categoryIndex * 75}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gray-900/45 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm transition duration-300 hover:border-indigo-400/30 hover:bg-gray-900/65 sm:p-7"
               >
-                <path d="M0 0h14v17H0V0Zm2 2v13h10V2H2Z" />
-                <path
-                  fillOpacity=".48"
-                  d="m16.295 5.393 7.528 2.034-4.436 16.412L5.87 20.185l.522-1.93 11.585 3.132 3.392-12.55-5.597-1.514.522-1.93Z"
+                {/* Card glow */}
+                <div
+                  className="pointer-events-none absolute -right-24 -top-24 h-52 w-52 rounded-full bg-indigo-500/10 blur-3xl transition duration-500 group-hover:bg-indigo-500/20"
+                  aria-hidden="true"
                 />
-              </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Project Milestones
-              </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
-              </p>
-            </article>
-            <article>
-              <svg
-                className="mb-3 fill-indigo-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-              >
-                <path fillOpacity=".48" d="M7 8V0H5v8h2Zm12 16v-4h-2v4h2Z" />
-                <path d="M19 6H0v2h17v8H7v-6H5v8h19v-2h-5V6Z" />
-              </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Team Views
-              </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
-              </p>
-            </article>
-            <article>
-              <svg
-                className="mb-3 fill-indigo-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-              >
-                <path d="M23.414 6 18 .586 16.586 2l3 3H7a6 6 0 0 0-6 6h2a4 4 0 0 1 4-4h12.586l-3 3L18 11.414 23.414 6Z" />
-                <path
-                  fillOpacity=".48"
-                  d="M13.01 12.508a2.5 2.5 0 0 0-3.502.482L1.797 23.16.203 21.952l7.71-10.17a4.5 4.5 0 1 1 7.172 5.437l-4.84 6.386-1.594-1.209 4.841-6.385a2.5 2.5 0 0 0-.482-3.503Z"
-                />
-              </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Advanced Search
-              </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
-              </p>
-            </article>
-            <article>
-              <svg
-                className="mb-3 fill-indigo-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-              >
-                <path
-                  fillOpacity=".48"
-                  d="m3.031 9.05-.593-.805 1.609-1.187.594.804a6.966 6.966 0 0 1 0 8.276l-.594.805-1.61-1.188.594-.805a4.966 4.966 0 0 0 0-5.9Z"
-                />
-                <path d="m7.456 6.676-.535-.845 1.69-1.07.534.844a11.944 11.944 0 0 1 0 12.789l-.535.845-1.69-1.071.536-.845a9.944 9.944 0 0 0 0-10.647Z" />
-                <path
-                  d="m11.888 4.35-.514-.858 1.717-1.027.513.858a16.9 16.9 0 0 1 2.4 8.677 16.9 16.9 0 0 1-2.4 8.676l-.513.859-1.717-1.028.514-.858A14.9 14.9 0 0 0 14.003 12a14.9 14.9 0 0 0-2.115-7.65Z"
-                  opacity=".48"
-                />
-                <path d="m16.321 2-.5-.866 1.733-1 .5.866A22 22 0 0 1 21 12c0 3.852-1.017 7.636-2.948 10.97l-.502.865-1.73-1.003.501-.865A19.878 19.878 0 0 0 19 12a20 20 0 0 0-2.679-10Z" />
-              </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Strategic Initiatives
-              </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
-              </p>
-            </article>
-            <article>
-              <svg
-                className="mb-3 fill-indigo-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-              >
-                <path
-                  fillOpacity=".48"
-                  d="M12 8.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
-                />
-                <path d="m7.454 2.891.891-.454L7.437.655l-.891.454a12 12 0 0 0 0 21.382l.89.454.91-1.781-.892-.455a10 10 0 0 1 0-17.818ZM17.456 1.11l-.891-.454-.909 1.782.891.454a10 10 0 0 1 0 17.819l-.89.454.908 1.781.89-.454a12 12 0 0 0 0-21.382Z" />
-              </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Flexible Workflows
-              </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
-              </p>
-            </article>
-            <article>
-              <svg
-                className="mb-3 fill-indigo-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width={24}
-                height={24}
-              >
-                <path
-                  fillOpacity=".48"
-                  d="M19 8h5v2h-5V8Zm-4 5h9v2h-9v-2Zm9 5H11v2h13v-2Z"
-                />
-                <path d="M19.406 3.844 6.083 20.497.586 15 2 13.586l3.917 3.917L17.844 2.595l1.562 1.25Z" />
-              </svg>
-              <h3 className="mb-1 font-nacelle text-[1rem] font-semibold text-gray-200">
-                Unified Timeline
-              </h3>
-              <p className="text-indigo-200/65">
-                Track progress across custom flows for your team. Find the right
-                balance for the user, privacy and security.
-              </p>
-            </article>
+
+                <div className="relative">
+                  {/* Category header */}
+                  <div className="mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
+                    <div>
+                      <h3 className="font-handjet text-2xl font-bold text-gray-100">
+                        {category.title}
+                      </h3>
+
+                      <p className="mt-1 max-w-xl font-inter text-sm leading-relaxed text-indigo-200/55">
+                        {category.description}
+                      </p>
+                    </div>
+
+                    <span className="font-handjet text-sm uppercase tracking-widest text-indigo-300/60">
+                      {String(categoryIndex + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* Technology items */}
+                  <div className="flex flex-wrap gap-3">
+                    {category.technologies.map((technology) => {
+                      const Icon = technology.icon;
+
+                      return (
+                        <div
+                          key={`${category.title}-${technology.name}`}
+                          className="group/technology relative flex min-w-[105px] flex-col items-center justify-center gap-3 overflow-hidden rounded-xl border border-indigo-300/10 bg-indigo-400/[0.06] px-4 py-4 transition duration-300 hover:-translate-y-1 hover:border-indigo-300/35 hover:bg-indigo-400/[0.12] hover:shadow-lg hover:shadow-indigo-500/10"
+                        >
+                          <div
+                            className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-indigo-300 to-transparent transition-transform duration-300 group-hover/technology:scale-x-100"
+                            aria-hidden="true"
+                          />
+
+                          <Icon
+                            className={`h-7 w-7 transition duration-300 group-hover/technology:scale-110 ${technology.iconClassName}`}
+                            aria-hidden="true"
+                          />
+
+                          <span className="font-handjet text-base font-semibold uppercase tracking-wide text-cyan-100/80 transition group-hover/technology:text-cyan-100">
+                            {technology.name}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>

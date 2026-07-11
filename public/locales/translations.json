@@ -5,14 +5,14 @@
       "subtitle": "We provide tech-first solutions that empower decision-makers to build healthier and happier workspaces from anywhere in the world.",
       "categories": {
         "projects": "Projects",
-        "languages": "Languages",
+        "technologies": "Technologies",
         "getintouch": "Get In Touch",
         "aboutme": "About Me"
       }
     },
     "header": {
         "projects": "Projects",
-        "languages": "Languages",
+        "technologies": "Technologies",
         "getintouch": "Get In Touch",
         "aboutme": "About Me"
     },
@@ -45,14 +45,14 @@
       "subtitle": "Proporcionamos soluciones enfocadas en tecnología que permiten a los tomadores de decisiones construir espacios de trabajo más saludables y felices desde cualquier lugar del mundo.",
       "categories": {
           "projects": "Proyectos",
-          "languages": "Lenguajes",
+          "technologies": "Tecnologías",
           "getintouch": "Contactos",
           "aboutme": "Acerca de mi"
       }
     },
     "header": {
         "projects": "Proyectos",
-        "languages": "Lenguajes",
+      "technologies": "Tecnologías",
         "getintouch": "Contactos",
         "aboutme": "Acerca de mi"
     },
