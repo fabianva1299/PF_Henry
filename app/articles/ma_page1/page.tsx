@@ -1,15 +1,7 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
-
-import tbpChart from "@/public/images/banhvi/tbp-2016-2025.png";
-import ipcChart from "@/public/images/banhvi/ipc-2016-2025.png";
-import unemploymentChart from "@/public/images/banhvi/desempleo-2016-2025.png";
-import imaeChart from "@/public/images/banhvi/imae-2016-2025.png";
-import iccChart from "@/public/images/banhvi/icc-2016-2025.png";
-import correlationChart from "@/public/images/banhvi/matriz-correlaciones.png";
 
 const sourceCode = String.raw`
   #Paquetes ==================
@@ -475,7 +467,7 @@ export default function BanhviPanelArticle() {
         </Link>
 
         <header className="border-b border-white/10 pb-10 pt-12">
-          <section className="mx-auto mb-6 max-w-6x1 px-1 pt-8 sm:px-1">
+          <section className="mx-auto mb-6 max-w-6xl px-1 pt-8 sm:px-1">
             <Link
               href="/projects/modelo01"
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/[0.08] px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-200 transition-all duration-300 hover:border-indigo-400/60 hover:bg-indigo-500/[0.15] hover:text-white"
@@ -695,35 +687,35 @@ export default function BanhviPanelArticle() {
 
               <div className="space-y-10">
                 <FigureCard
-                  image={tbpChart}
+                  image="/images/banhvi/tbp-2016-2025.png"
                   title="Gráfico 1. Tasa Básica Pasiva 2016-2025"
                   alt="Evolución de la Tasa Básica Pasiva entre 2016 y 2025"
                   source="Fuente: elaboración propia con datos del BCCR (Costa Rica)."
                 />
 
                 <FigureCard
-                  image={ipcChart}
+                  image="/images/banhvi/ipc-2016-2025.png"
                   title="Gráfico 2. Índice de Precios al Consumidor 2016-2025"
                   alt="Evolución del Índice de Precios al Consumidor entre 2016 y 2025"
                   source="Fuente: elaboración propia con datos del BCCR (Costa Rica)."
                 />
 
                 <FigureCard
-                  image={unemploymentChart}
+                  image="/images/banhvi/desempleo-2016-2025.png"
                   title="Gráfico 3. Tasa de Desempleo 2016-2025"
                   alt="Evolución de la tasa de desempleo entre 2016 y 2025"
                   source="Fuente: elaboración propia con datos del BCCR (Costa Rica)."
                 />
 
                 <FigureCard
-                  image={imaeChart}
+                  image="/images/banhvi/imae-2016-2025.png"
                   title="Gráfico 4. Índice Mensual de Actividad Económica 2016-2025"
                   alt="Evolución del Índice Mensual de Actividad Económica entre 2016 y 2025"
                   source="Fuente: elaboración propia con datos del BCCR (Costa Rica), año 2025."
                 />
 
                 <FigureCard
-                  image={iccChart}
+                  image="/images/banhvi/icc-2016-2025.png"
                   title="Gráfico 5. Índice de Confianza del Consumidor 2016-2025"
                   alt="Evolución del Índice de Confianza del Consumidor entre 2016 y 2025"
                   source="Fuente: elaboración propia con datos de la Escuela de Estadística de la Universidad de Costa Rica."
@@ -772,7 +764,7 @@ export default function BanhviPanelArticle() {
 
               <div className="mt-8">
                 <FigureCard
-                  image={correlationChart}
+                  image="/images/banhvi/matriz-correlaciones.png"
                   title="Gráfico 6. Matriz de correlaciones – Series originales"
                   alt="Matriz de correlaciones de las variables macroeconómicas"
                   source="Fuente: elaboración propia con datos del BCCR."
@@ -1383,23 +1375,32 @@ function DataTable({ headers, rows, title, caption }: DataTableProps) {
 }
 
 type FigureCardProps = {
-  image: StaticImageData;
+  image: string;
   title: string;
   alt: string;
   source: string;
+  objectFit?: "contain" | "cover";
 };
 
-function FigureCard({ image, title, alt, source }: FigureCardProps) {
+function FigureCard({
+  image,
+  title,
+  alt,
+  source,
+  objectFit = "contain",
+}: FigureCardProps) {
   return (
-    <figure>
+    <figure className="w-full">
       <h3 className="mb-4 text-lg font-semibold text-white">{title}</h3>
 
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-white p-2 shadow-2xl shadow-black/30">
-        <Image
+      <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#07101f] p-3 shadow-2xl shadow-black/30">
+        <img
           src={image}
           alt={alt}
-          className="h-auto w-full rounded-xl object-contain"
-          sizes="(max-width: 1024px) 100vw, 900px"
+          loading="lazy"
+          className={`block h-auto max-h-[760px] w-full rounded-xl bg-white ${
+            objectFit === "contain" ? "object-contain" : "object-cover"
+          }`}
         />
       </div>
 

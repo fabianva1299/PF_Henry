@@ -1,13 +1,7 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
-
-import cooperativesElbow from "@/public/images/clusterizacion/cooperativas-metodo-codo.png";
-import cooperativesSilhouette from "@/public/images/clusterizacion/cooperativas-silhouette.png";
-import otherInstitutionsElbow from "@/public/images/clusterizacion/otras-instituciones-metodo-codo.png";
-import otherInstitutionsSilhouette from "@/public/images/clusterizacion/otras-instituciones-silhouette.png";
 
 const sourceCode = String.raw`
   ##Paquetes
@@ -316,7 +310,7 @@ export default function ClusterizationArticle() {
         </Link>
 
         <header className="border-b border-white/10 pb-10 pt-12">
-          <section className="mx-auto mb-6 max-w-6x1 px-1 pt-8 sm:px-1">
+          <section className="mx-auto mb-6 max-w-6xl px-1 pt-8 sm:px-1">
             <Link
               href="/projects/modelo02"
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/[0.08] px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-200 transition-all duration-300 hover:border-indigo-400/60 hover:bg-indigo-500/[0.15] hover:text-white"
@@ -470,12 +464,12 @@ export default function ClusterizationArticle() {
                   title="Figura 1. Método del codo y Silhouette para Cooperativas"
                   figures={[
                     {
-                      image: cooperativesElbow,
+                      image: "/images/clusterizacion/cooperativas-metodo-codo.png",
                       alt: "Método del codo aplicado al segmento de cooperativas",
                       label: "Método del codo",
                     },
                     {
-                      image: cooperativesSilhouette,
+                      image: "/images/clusterizacion/cooperativas-silhouette.png",
                       alt: "Método Silhouette aplicado al segmento de cooperativas",
                       label: "Coeficiente Silhouette",
                     },
@@ -487,12 +481,12 @@ export default function ClusterizationArticle() {
                   title="Anexo 1. Método del codo y Silhouette para Otras Instituciones"
                   figures={[
                     {
-                      image: otherInstitutionsElbow,
+                      image: "/images/clusterizacion/otras-instituciones-metodo-codo.png",
                       alt: "Método del codo aplicado al segmento de bancos y otras instituciones",
                       label: "Método del codo",
                     },
                     {
-                      image: otherInstitutionsSilhouette,
+                      image: "/images/clusterizacion/otras-instituciones-silhouette.png",
                       alt: "Método Silhouette aplicado al segmento de bancos y otras instituciones",
                       label: "Coeficiente Silhouette",
                     },
@@ -982,7 +976,7 @@ function DataTable({ title, headers, rows, caption }: DataTableProps) {
 }
 
 type FigureItem = {
-  image: StaticImageData;
+  image: string;
   alt: string;
   label: string;
 };
@@ -1004,13 +998,12 @@ function FigureGroup({ title, figures, source }: FigureGroupProps) {
             key={figure.label}
             className="overflow-hidden rounded-2xl border border-white/10 bg-[#07101f] p-2 shadow-2xl shadow-black/30"
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white">
-              <Image
+            <div className="aspect-[4/3] overflow-hidden rounded-xl bg-white">
+              <img
                 src={figure.image}
                 alt={figure.alt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
+                className="h-full w-full object-contain"
               />
             </div>
             <p className="px-2 pb-1 pt-3 text-center text-sm text-slate-400">
