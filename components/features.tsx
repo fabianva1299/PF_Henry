@@ -36,33 +36,6 @@ interface TechnologyCategory {
 
 const technologyCategories: TechnologyCategory[] = [
   {
-    title: "Back-end y bases de datos",
-    description:
-      "Herramientas para API, lógica de negocio, autenticación y gestión de datos.",
-    Tecnologías: [
-      {
-        name: "Python",
-        icon: SiPython,
-        iconClassName: "text-yellow-300",
-      },
-      {
-        name: "MySQL",
-        icon: FiDatabase,
-        iconClassName: "text-blue-400",
-      },
-      {
-        name: "PostgreSQL",
-        icon: FiDatabase,
-        iconClassName: "text-blue-300",
-      },
-      {
-        name: "Supabase",
-        icon: FiDatabase,
-        iconClassName: "text-emerald-400",
-      },
-    ],
-  },
-  {
     title: "Análisis de datos, programación y econometría",
     description:
       "Herramientas utilizadas para la gestión, procesamiento y análisis estadístico de datos, así como para la construcción de modelos econométricos y predictivos.",
