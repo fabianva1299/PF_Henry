@@ -92,9 +92,6 @@ export default function ModalVideo({
                 </linearGradient>
               </defs>
             </svg>
-            <span className="text-sm font-medium leading-tight text-gray-300">
-              Watch Video About Me
-            </span>
           </span>
         </span>
       </button>

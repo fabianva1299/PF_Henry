@@ -4,12 +4,12 @@ import WorkflowImg03 from "@/public/images/workflow-03.png";
 
 export const projects = [
   {
-    slug: "gym-schedule",
-    title: "GYM-SCHEDULE",
+    slug: "modelo_de_datos_de_panel",
+    title: "Modelo de Datos de Panel",
     description: "Sistema para gestionar horarios de gimnasio.",
     image: WorkflowImg01,
     tech: ["Next.js", "Tailwind", "Supabase"],
-    github: "https://github.com/tuusuario/gym-schedule",
+    github: "https://github.com/tuusuario/modelo_de_datos_de_panel",
     demo: "https://tudemo.com",
   },
   {

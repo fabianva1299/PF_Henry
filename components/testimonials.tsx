@@ -125,8 +125,8 @@ const categoryOptions = [
   },
   {
     id: 2,
-    labelKey: "technologies",
-    href:"#technologies",
+    labelKey: "Tecnologías",
+    href:"#Tecnologías",
     icon: (
       <svg
         className="fill-current"

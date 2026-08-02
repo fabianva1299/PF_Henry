@@ -138,3 +138,32 @@ body {
 .font-inter {
   font-family: var(--font-inter), sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.code-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(129, 140, 248, 0.45)
+    rgba(255, 255, 255, 0.03);
+}
+
+.code-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.code-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.code-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(129, 140, 248, 0.35);
+  border: 3px solid #030711;
+  border-radius: 999px;
+}
+
+.code-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(129, 140, 248, 0.55);
+}

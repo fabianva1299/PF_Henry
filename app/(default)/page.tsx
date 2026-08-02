@@ -4,7 +4,6 @@ export const metadata = {
 };
 
 import PageIllustration from "@/components/page-illustration";
-import Hero from "@/components/profile-home";
 import Workflows from "@/components/workflows";
 import Features from "@/components/features";
 import Contact from "@/components/contact";
@@ -16,7 +15,6 @@ export default function Home() {
       <Workflows />
       <Features />
       <Contact />
-      <Hero />
     </div>
   );
 }

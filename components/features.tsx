@@ -6,7 +6,6 @@ import {
   SiCss,
   SiFigma,
   SiGit,
-  SiGithub,
   SiHtml5,
   SiJavascript,
   SiMysql,
@@ -31,71 +30,19 @@ interface Technology {
 interface TechnologyCategory {
   title: string;
   description: string;
-  technologies: Technology[];
+  Tecnologías: Technology[];
 }
 
 const technologyCategories: TechnologyCategory[] = [
   {
-    title: "FrontEnd",
+    title: "Back-end y bases de datos",
     description:
-      "Technologies I use to create responsive and interactive interfaces.",
-    technologies: [
-      {
-        name: "HTML5",
-        icon: SiHtml5,
-        iconClassName: "text-orange-500",
-      },
-      {
-        name: "CSS3",
-        icon: SiCss,
-        iconClassName: "text-blue-500",
-      },
-      {
-        name: "JavaScript",
-        icon: SiJavascript,
-        iconClassName: "text-yellow-400",
-      },
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        iconClassName: "text-blue-400",
-      },
-      {
-        name: "React",
-        icon: SiReact,
-        iconClassName: "text-cyan-400",
-      },
-      {
-        name: "Next.js",
-        icon: SiNextdotjs,
-        iconClassName: "text-gray-100",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: SiTailwindcss,
-        iconClassName: "text-cyan-400",
-      },
-      {
-        name: "Bootstrap",
-        icon: SiBootstrap,
-        iconClassName: "text-purple-500",
-      },
-    ],
-  },
-  {
-    title: "BackEnd & Databases",
-    description:
-      "Tools for APIs, business logic, authentication and data management.",
-    technologies: [
+      "Herramientas para API, lógica de negocio, autenticación y gestión de datos.",
+    Tecnologías: [
       {
         name: "Python",
         icon: SiPython,
         iconClassName: "text-yellow-300",
-      },
-      {
-        name: "Node.js",
-        icon: SiNodedotjs,
-        iconClassName: "text-green-500",
       },
       {
         name: "MySQL",
@@ -115,10 +62,10 @@ const technologyCategories: TechnologyCategory[] = [
     ],
   },
   {
-    title: "Data Analytics & BI",
+    title: "Análisis de datos e inteligencia empresarial",
     description:
-      "Technologies I use to transform data into actionable information.",
-    technologies: [
+      "Tecnologías que utilizo para transformar los datos en información útil.",
+    Tecnologías: [
       {
         name: "Power BI",
         icon: FiBarChart2,
@@ -151,49 +98,12 @@ const technologyCategories: TechnologyCategory[] = [
       },
     ],
   },
-  {
-    title: "Tools & Platforms",
-    description:
-      "Platforms that support my development, design and deployment workflow.",
-    technologies: [
-      {
-        name: "Git",
-        icon: FiGitBranch,
-        iconClassName: "text-orange-500",
-      },
-      {
-        name: "GitHub",
-        icon: SiGithub,
-        iconClassName: "text-gray-100",
-      },
-      {
-        name: "VS Code",
-        icon: FiMonitor,
-        iconClassName: "text-blue-400",
-      },
-      {
-        name: "Figma",
-        icon: FiFigma,
-        iconClassName: "text-pink-400",
-      },
-      {
-        name: "Vercel",
-        icon: SiVercel,
-        iconClassName: "text-gray-100",
-      },
-      {
-        name: "Azure",
-        icon: FiCloud,
-        iconClassName: "text-blue-400",
-      },
-    ],
-  },
 ];
 
 export default function Features() {
   return (
     <section
-      id="technologies"
+      id="Tecnologías"
       className="relative scroll-mt-24 overflow-hidden"
     >
       {/* Background decoration */}
@@ -229,17 +139,17 @@ export default function Features() {
           <div className="mx-auto max-w-3xl pb-10 text-center md:pb-14">
             <div className="mb-4 inline-flex items-center gap-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-300/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-300/50">
               <span className="font-handjet text-lg font-semibold uppercase tracking-[0.18em] text-indigo-300">
-                My Stack
+                Mi pila
               </span>
             </div>
 
             <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-indigo-200),var(--color-gray-50),var(--color-indigo-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-handjet text-4xl font-bold text-transparent md:text-5xl">
-              Technologies
+              Tecnologías
             </h2>
 
             <p className="mx-auto max-w-2xl font-inter text-base leading-relaxed text-indigo-200/65 md:text-lg">
-              Technologies, frameworks and tools I use to build applications,
-              analyze information and create data-driven solutions.
+              Tecnologías, marcos de trabajo y herramientas que utilizo para desarrollar aplicaciones, 
+              analizar información y crear soluciones basadas en datos.
             </p>
           </div>
           <div className="mb-8 flex items-center gap-3">
@@ -248,7 +158,7 @@ export default function Features() {
             </div>
 
             <h2 className="font-handjet text-3xl font-bold text-gray-100">
-              Technologies
+              Tecnologías
             </h2>
           </div>
 
@@ -287,7 +197,7 @@ export default function Features() {
 
                   {/* Technology items */}
                   <div className="flex flex-wrap gap-3">
-                    {category.technologies.map((technology) => {
+                    {category.Tecnologías.map((technology) => {
                       const Icon = technology.icon;
 
                       return (

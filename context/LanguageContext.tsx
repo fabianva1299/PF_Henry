@@ -10,16 +10,14 @@ interface Translations {
     subtitle: string;
     categories: {
       projects: string;
-      technologies: string;
+      Tecnologías: string;
       getintouch: string;
-      aboutme: string;
     };
   };
   header: {
     projects: string;
-    technologies: string;
+    Tecnologías: string;
     getintouch: string;
-    aboutme: string;
   };
   common: {
     viewProject: string;
@@ -27,7 +25,7 @@ interface Translations {
   contactSection: {
     title: string;
     subtitle: string;
-    github: {
+    cellphone: {
       label: string;
       description: string;
       link: string;
@@ -62,37 +60,35 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
       subtitle: "",
       categories: {
         projects: "Projects",
-        technologies: "Technologies",
-        getintouch: "Get In Touch",
-        aboutme: "About Me"
+        Tecnologías: "Tecnologías",
+        getintouch: "Ponte en Contacto"
       }
     },
     header: {
       projects: "Projects",
-      technologies: "Technologies",
-      getintouch: "Get In Touch",
-      aboutme: "About Me"
+      Tecnologías: "Tecnologías",
+      getintouch: "Ponte en Contacto"
     },
     common: {
-      viewProject: "View project"
+      viewProject: "Ver Proyecto"
     },
     contactSection: {
-      title: "Get In Touch",
-      subtitle: "Let's connect and discuss your next project. Choose your preferred way to reach out.",
-      github: {
-        label: "GITHUB",
-        description: "Version Control",
-        link: "https://github.com/gaava21"
+      title: "Ponte en Contacto",
+      subtitle: "Pongámonos en contacto y hablemos de tu próximo proyecto. Elige la forma que prefieras para contactar conmigo.",
+      cellphone: {
+        label: "PHONE",
+        description: "Call or WhatsApp",
+        link: "tel:+50686517609"
       },
       linkedin: {
         label: "LINKEDIN",
         description: "Professional Network",
-        link: "https://www.linkedin.com/in/gaava21/"
+        link: "https://www.linkedin.com/in/henry-alvarado-vargas-0a5566221/"
       },
       email: {
         label: "EMAIL",
         description: "Direct Message",
-        link: "mailto:gabo20032101@gmail.com"
+        link: "mailto:fabianva1299@gmail.com"
       }
     }
   },
@@ -102,16 +98,14 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
       subtitle: "",
       categories: {
         projects: "Proyectos",
-        technologies: "Tecnologías",
-        getintouch: "Contactos",
-        aboutme: "Acerca de mi"
+        Tecnologías: "Tecnologías",
+        getintouch: "Contactos"
       }
     },
     header: {
       projects: "Proyectos",
-      technologies: "Technologies",
-      getintouch: "Contactos",
-      aboutme: "Acerca de mi"
+      Tecnologías: "Tecnologías",
+      getintouch: "Contactos"
     },
     common: {
       viewProject: "Ver proyecto"
@@ -119,20 +113,20 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
     contactSection: {
       title: "Ponte en Contacto",
       subtitle: "Conectemos y hablemos sobre tu próximo proyecto. Elige tu forma preferida de comunicación.",
-      github: {
-        label: "GITHUB",
-        description: "Control de Versiones",
-        link: "https://github.com/gaava21"
+      cellphone: {
+        label: "TELÉFONO",
+        description: "Llamada o WhatsApp",
+        link: "tel:+50686517609"
       },
       linkedin: {
         label: "LINKEDIN",
         description: "Red Profesional",
-        link: "https://www.linkedin.com/in/gaava21/"
+        link: "https://www.linkedin.com/in/henry-alvarado-vargas-0a5566221/"
       },
       email: {
         label: "EMAIL",
         description: "Mensaje Directo",
-        link: "mailto:gabo20032101@gmail.com"
+        link: "mailto:fabianva1299@gmail.com"
       }
     }
   }
