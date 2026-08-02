@@ -154,8 +154,8 @@ export default function Features() {
             </h2>
 
             <p className="mx-auto max-w-2xl font-inter text-base leading-relaxed text-indigo-200/65 md:text-lg">
-              Tecnologías, marcos de trabajo y herramientas que utilizo para desarrollar aplicaciones, 
-              analizar información y crear soluciones basadas en datos.
+              Tecnologías, marcos de trabajo y herramientas que utilizo para
+              analizar información, crear modelos y crear soluciones basadas en datos.
             </p>
           </div>
           <div className="mb-8 flex items-center gap-3">
