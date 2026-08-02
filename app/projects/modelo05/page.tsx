@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import HV5 from "@/public/images/banhvI/hv5.png";
+import HV5 from "@/public/images/banhvi/hv5.png";
 
 export default function NovaSitePage() {
   return (
@@ -20,51 +20,52 @@ export default function NovaSitePage() {
         <div className="mt-12 grid items-center gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <div>
             <h1 className="mt-6 text-4xl font-semibold md:text-6xl">
-               SIMULACIÓN MONTECARLO
+              SIMULACIÓN MONTE CARLO
             </h1>
 
             <p className="mt-6 text-lg text-indigo-200/65">
-              PRECIO DEL PETROLEO
+              PRECIO DEL PETRÓLEO
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="rounded-full bg-gray-800 px-3 py-1 text-sm">
                 R
               </span>
+
               <span className="rounded-full bg-gray-800 px-3 py-1 text-sm">
                 R-STUDIO
               </span>
             </div>
 
             <div className="mt-10 flex gap-4">
-              <a
+              <Link
                 href="/articles/ma_page5"
-                rel="noopener noreferrer"
                 className="btn bg-indigo-600 text-white hover:bg-indigo-500"
               >
-                Resumen Técnico
-              </a>
+                Resumen técnico
+              </Link>
             </div>
           </div>
 
           <div className="relative">
             <Image
               src={HV5}
-              alt="NovaSite website"
+              alt="Simulación Monte Carlo del precio del petróleo WTI"
               width={1100}
               height={750}
-              className="rounded-2xl border border-gray-800 shadow-2xl"
+              priority
+              className="h-auto w-full rounded-2xl border border-gray-800 shadow-2xl"
             />
           </div>
         </div>
 
         <section className="mt-24">
-          <h2 className="text-3xl font-semibold">Acerca del Proyecto</h2>
+          <h2 className="text-3xl font-semibold">Acerca del proyecto</h2>
 
           <p className="mt-4 max-w-3xl text-indigo-200/65">
-            El proyecto utiliza una simulación Monte Carlo para proyectar posibles 
-            precios del petróleo WTI a tres y seis meses, representando la incertidumbre mediante distintos 
-            percentiles.
+            El proyecto utiliza una simulación Monte Carlo para proyectar
+            posibles precios del petróleo WTI a tres y seis meses,
+            representando la incertidumbre mediante distintos percentiles.
           </p>
         </section>
       </section>
