@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import { FiBarChart2, FiCloud, FiDatabase, FiFigma, FiGitBranch, FiMonitor, FiTrendingUp } from "react-icons/fi";
+import { FiBarChart2, FiCloud, FiDatabase, FiFigma, FiGitBranch, FiMonitor, FiTrendingUp, FiShield, FiLayers, FiPieChart, FiActivity } from "react-icons/fi";
 
 import {
   SiBootstrap,
@@ -14,6 +14,7 @@ import {
   SiPostgresql,
   SiPython,
   SiR,
+  SiRstudioide,
   SiReact,
   SiSupabase,
   SiTailwindcss,
@@ -62,19 +63,56 @@ const technologyCategories: TechnologyCategory[] = [
     ],
   },
   {
-    title: "Análisis de datos e inteligencia empresarial",
+    title: "Análisis de datos, programación y econometría",
     description:
-      "Tecnologías que utilizo para transformar los datos en información útil.",
+      "Herramientas utilizadas para la gestión, procesamiento y análisis estadístico de datos, así como para la construcción de modelos econométricos y predictivos.",
     Tecnologías: [
+      {
+        name: "Python",
+        icon: SiPython,
+        iconClassName: "text-yellow-300",
+      },
+      {
+        name: "RStudio",
+        icon: SiRstudioide,
+        iconClassName: "text-blue-400",
+      },
+      {
+        name: "SQL",
+        icon: FiDatabase,
+        iconClassName: "text-indigo-300",
+      },
+      {
+        name: "Stata",
+        icon: FiActivity,
+        iconClassName: "text-teal-400",
+      },
+      {
+        name: "SPSS",
+        icon: FiPieChart,
+        iconClassName: "text-orange-400",
+      },
+      {
+        name: "EViews",
+        icon: FiTrendingUp,
+        iconClassName: "text-rose-400",
+      },
+    ],
+  },
+  {
+    title: "Inteligencia de negocios, finanzas y gestión de riesgos",
+    description:
+      "Herramientas utilizadas para la visualización de información, elaboración de reportes, planificación financiera, simulación de escenarios y apoyo a la toma de decisiones.",
+    Tecnologías: [
+      {
+        name: "Microsoft Excel",
+        icon: FiBarChart2,
+        iconClassName: "text-emerald-500",
+      },
       {
         name: "Power BI",
         icon: FiBarChart2,
         iconClassName: "text-yellow-400",
-      },
-      {
-        name: "Excel",
-        icon: FiBarChart2,
-        iconClassName: "text-emerald-500",
       },
       {
         name: "Tableau",
@@ -82,19 +120,14 @@ const technologyCategories: TechnologyCategory[] = [
         iconClassName: "text-blue-300",
       },
       {
-        name: "Python",
-        icon: SiPython,
-        iconClassName: "text-yellow-300",
+        name: "Risk Simulator",
+        icon: FiShield,
+        iconClassName: "text-amber-500",
       },
       {
-        name: "R",
-        icon: FiTrendingUp,
-        iconClassName: "text-blue-400",
-      },
-      {
-        name: "SQL",
-        icon: FiDatabase,
-        iconClassName: "text-indigo-300",
+        name: "Oracle Hyperion",
+        icon: FiLayers,
+        iconClassName: "text-indigo-400",
       },
     ],
   },
