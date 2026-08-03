@@ -7,7 +7,6 @@ type Language = "en" | "es";
 interface Translations {
   testimonials: {
     title: string;
-    subtitle: string;
     categories: {
       projects: string;
       Tecnologías: string;
@@ -24,7 +23,6 @@ interface Translations {
   };
   contactSection: {
     title: string;
-    subtitle: string;
     cellphone: {
       label: string;
       description: string;
@@ -57,7 +55,6 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
   en: {
     testimonials: {
       title: "",
-      subtitle: "",
       categories: {
         projects: "Projects",
         Tecnologías: "Tecnologías",
@@ -74,7 +71,6 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
     },
     contactSection: {
       title: "Ponte en Contacto",
-      subtitle: "Pongámonos en contacto y hablemos de tu próximo proyecto. Elige la forma que prefieras para contactar conmigo.",
       cellphone: {
         label: "PHONE",
         description: "Call or WhatsApp",
@@ -95,7 +91,6 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
   es: {
     testimonials: {
       title: "",
-      subtitle: "",
       categories: {
         projects: "Proyectos",
         Tecnologías: "Tecnologías",
@@ -112,7 +107,6 @@ const DEFAULT_TRANSLATIONS: Record<Language, Translations> = {
     },
     contactSection: {
       title: "Ponte en Contacto",
-      subtitle: "Conectemos y hablemos sobre tu próximo proyecto. Elige tu forma preferida de comunicación.",
       cellphone: {
         label: "TELÉFONO",
         description: "Llamada o WhatsApp",
