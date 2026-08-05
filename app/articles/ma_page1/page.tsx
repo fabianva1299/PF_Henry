@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, type ReactNode } from "react";
 
 const sourceCode = String.raw`
-  #Paquetes ==================
+ #Paquetes
   install.packages(c("readxl", "dplyr", "plm", "lmtest", "sandwich", "tidyr", "stringr"), dependencies = TRUE)
 
   library(readxl)
@@ -15,17 +15,17 @@ const sourceCode = String.raw`
   library(sandwich)
   library(stringr)
 
-  # ================== Datos ==================
-  ruta_archivo <- file.choose()
-  df       <- read_excel(path = ruta_archivo, sheet = "Data")
-  df_macro <- read_excel(path = ruta_archivo, sheet = "Data2")
+  # Datos
+  ruta_archivo = file.choose()
+  df       = read_excel(path = ruta_archivo, sheet = "Data")
+  df_macro = read_excel(path = ruta_archivo, sheet = "Data2")
 
-  # ================== Limpieza de data ==================
-  # 1) Normalizar nombres posibles de columnas macro (TPC, TBP, IPC, IMAE)
-  normaliza_nombres <- function(tbl) {
-    nm <- names(tbl)
+  #Limpieza de data 
+  # 1 Normalizar nombres posibles de columnas macro (TPC, TBP, IPC, IMAE)
+  normaliza_nombres = function(tbl) {
+    nm = names(tbl)
     
-    ren <- c(
+    ren = c(
       TPC   = intersect(nm, c("TPC","TPCoriginal","TPC_original","tpc")),
       TBP   = intersect(nm, c("TBP","TBPoriginal","TBP_original","tbp")),
       IPC   = intersect(nm, c("IPC","IPCoriginal","IPC_original","ipc")),
@@ -33,40 +33,40 @@ const sourceCode = String.raw`
     
     for (k in names(ren)) {
       if (length(ren[[k]]) >= 1 && !(k %in% nm)) {
-        tbl <- dplyr::rename(tbl, !!k := all_of(ren[[k]][1]))}} tbl}
+        tbl = dplyr::rename(tbl, !!k := all_of(ren[[k]][1]))}} tbl}
 
-  df_macro <- normaliza_nombres(df_macro)
+  df_macro = normaliza_nombres(df_macro)
 
-  # 2) Fecha y llave mensual
-  if (!inherits(df$Periodo, "Date"))    df$Periodo    <- as.Date(df$Periodo)
-  if (!inherits(df_macro$Periodo, "Date")) df_macro$Periodo <- as.Date(df_macro$Periodo)
+  # 2 Fecha y llave mensual
+  if (!inherits(df$Periodo, "Date"))    df$Periodo    = as.Date(df$Periodo)
+  if (!inherits(df_macro$Periodo, "Date")) df_macro$Periodo = as.Date(df_macro$Periodo)
 
-  df       <- df %>% mutate(Periodo_Mes = format(Periodo, "%Y-%m"))
-  df_macro <- df_macro %>% mutate(Periodo_Mes = format(Periodo, "%Y-%m"))
+  df       =df %>% mutate(Periodo_Mes = format(Periodo, "%Y-%m"))
+  df_macro = df_macro %>% mutate(Periodo_Mes = format(Periodo, "%Y-%m"))
 
-  # 3) Revision de duplicados por mes, colapsamos por último valor no-NA
-  macro_vars <- intersect(names(df_macro), c("TPC","TBP","IPC","IMAE"))
-  df_macro_col <- df_macro %>%
+  # 3 Revision de duplicados por mes, colapsamos por último valor no-NA
+  macro_vars = intersect(names(df_macro), c("TPC","TBP","IPC","IMAE"))
+  df_macro_col = df_macro %>%
     arrange(Periodo) %>%
     group_by(Periodo_Mes) %>%
     summarise(across(all_of(macro_vars), ~ dplyr::last(na.omit(.))), .groups = "drop")
 
   # 4) Convertir datos en numérico (por si vinieron como texto con símbolos)
-  to_num <- function(x) {
-    x <- as.character(x)
-    x <- gsub("[^0-9,.-]", "", x)   # eliminar símbolos
-    x <- gsub(",", ".", x)          # coma -> punto
+  to_num = function(x) {
+    x = as.character(x)
+    x = gsub("[^0-9,.-]", "", x)   # eliminar símbolos
+    x = gsub(",", ".", x)          # coma -> punto
     suppressWarnings(as.numeric(x))
   }
-  df_macro_col <- df_macro_col %>%
+  df_macro_col = df_macro_col %>%
     mutate(across(all_of(macro_vars), to_num))
 
   # Unir bases 
-  df <- df %>%
+  df = df %>%
     left_join(df_macro_col, by = "Periodo_Mes")
 
   # Etiquetar entidades por grupos
-  df <- df %>%
+  df = df %>%
     mutate(GRUPO = case_when(
       Entidad %in% c("COOCIQUE","COOPEALIANZA","COOPEANDE","COOPEMEP","COOPENAE","COOPECAJA") ~ "COOPERATIVAS",
       Entidad %in% c("BAC SAN JOSE","CATHAY","GRUPO MUTUAL","MUCAP","SCOTIABANK","POPULAR") ~ "OTROS",
@@ -75,7 +75,7 @@ const sourceCode = String.raw`
     filter(!is.na(GRUPO))
 
   # Renombramiento de indicadores financieros
-  df_wide <- df %>%
+  df_wide = df %>%
     select(Entidad, Periodo, Indicador, Valor, all_of(macro_vars), GRUPO) %>%
     mutate(Indicador = case_when(
       Indicador == "Activo Productivo / Activo total" ~ "I1",
@@ -103,28 +103,28 @@ const sourceCode = String.raw`
   if (!inherits(df_wide$Periodo, "Date")) df_wide$Periodo <- as.Date(df_wide$Periodo)
 
   # Quitar posibles duplicados, por Entidad y periodo
-  df_wide <- df_wide %>% distinct(Entidad, Periodo, .keep_all = TRUE)
+  df_wide = df_wide %>% distinct(Entidad, Periodo, .keep_all = TRUE)
 
-  df_coop  <- df_wide %>% filter(GRUPO == "COOPERATIVAS") %>% as.data.frame()
-  df_otros <- df_wide %>% filter(GRUPO == "OTROS")         %>% as.data.frame()
+  df_coop  = df_wide %>% filter(GRUPO == "COOPERATIVAS") %>% as.data.frame()
+  df_otros = df_wide %>% filter(GRUPO == "OTROS")         %>% as.data.frame()
 
-  panel_coop  <- pdata.frame(df_coop,  index = c("Entidad","Periodo"))
-  panel_otros <- pdata.frame(df_otros, index = c("Entidad","Periodo"))
+  panel_coop  = pdata.frame(df_coop,  index = c("Entidad","Periodo"))
+  panel_otros = pdata.frame(df_otros, index = c("Entidad","Periodo"))
 
   # Modelos (RE) con IMAE 
   cat("========= MODELOS PARA COOPERATIVAS (EFECTOS ALEATORIOS) =========\n")
-  modelo_coop_I6  <- plm(I6  ~ TPC + TBP + IPC + IMAE, data = panel_coop,  model = "random", na.action = na.omit)
-  modelo_coop_I14 <- plm(I14 ~ TPC + TBP + IPC + IMAE, data = panel_coop,  model = "random", na.action = na.omit)
+  modelo_coop_I6  = plm(I6  ~ TPC + TBP + IPC + IMAE, data = panel_coop,  model = "random", na.action = na.omit)
+  modelo_coop_I14 = plm(I14 ~ TPC + TBP + IPC + IMAE, data = panel_coop,  model = "random", na.action = na.omit)
 
   cat("\n========= MODELOS PARA OTROS (EFECTOS ALEATORIOS) =========\n")
-  modelo_otros_I6  <- plm(I6  ~ TPC + TBP + IPC + IMAE, data = panel_otros, model = "random", na.action = na.omit)
-  modelo_otros_I14 <- plm(I14 ~ TPC + TBP + IPC + IMAE, data = panel_otros, model = "random", na.action = na.omit)
+  modelo_otros_I6  = plm(I6  ~ TPC + TBP + IPC + IMAE, data = panel_otros, model = "random", na.action = na.omit)
+  modelo_otros_I14 = plm(I14 ~ TPC + TBP + IPC + IMAE, data = panel_otros, model = "random", na.action = na.omit)
 
   # Resúmen por indicadores
   cat("\n\n=========== RESÚMENES COMPLETOS DE LOS MODELOS ==========\n")
 
-  modelos_coop  <- list(I6 = modelo_coop_I6,  I14 = modelo_coop_I14)
-  modelos_otros <- list(I6 = modelo_otros_I6, I14 = modelo_otros_I14)
+  modelos_coop  = list(I6 = modelo_coop_I6,  I14 = modelo_coop_I14)
+  modelos_otros = list(I6 = modelo_otros_I6, I14 = modelo_otros_I14)
 
   cat("\n--- MODELOS COOPERATIVAS ---\n")
   for (nombre in names(modelos_coop)) {
@@ -136,41 +136,38 @@ const sourceCode = String.raw`
     cat(paste0("\n\n>>> Modelo OTROS: ", nombre, "\n"))
     print(summary(modelos_otros[[nombre]]))}
 
-
-
-  ##============================================================================================
   # EFECTOS FIJOS - WITHIN
   library(plm)
   library(lmtest)
   library(sandwich)
   library(dplyr)
 
-  # Reconstruir paneles desde df_wide 
+  # Reconstruir paneles 
   if (!inherits(df_wide$Periodo, "Date")) df_wide$Periodo <- as.Date(df_wide$Periodo)
 
-  df_coop  <- df_wide %>%
+  df_coop  = df_wide %>%
     filter(GRUPO == "COOPERATIVAS") %>%
     distinct(Entidad, Periodo, .keep_all = TRUE) %>%
     as.data.frame()
 
-  df_otros <- df_wide %>%
+  df_otros = df_wide %>%
     filter(GRUPO == "OTROS") %>%
     distinct(Entidad, Periodo, .keep_all = TRUE) %>%
     as.data.frame()
 
-  panel_coop  <- pdata.frame(df_coop,  index = c("Entidad", "Periodo"))
-  panel_otros <- pdata.frame(df_otros, index = c("Entidad", "Periodo"))
+  panel_coop  = pdata.frame(df_coop,  index = c("Entidad", "Periodo"))
+  panel_otros = pdata.frame(df_otros, index = c("Entidad", "Periodo"))
 
   cat("========= EFECTOS FIJOS (INDIVIDUAL) - COOPERATIVAS =========\n")
-  fe_coop_I6  <- plm(I6  ~ TPC + TBP + IPC + IMAE, data = panel_coop,
+  fe_coop_I6  = plm(I6  ~ TPC + TBP + IPC + IMAE, data = panel_coop,
                     model = "within", effect = "individual", na.action = na.omit)
-  fe_coop_I14 <- plm(I14 ~ TPC + TBP + IPC + IMAE, data = panel_coop,
+  fe_coop_I14 = plm(I14 ~ TPC + TBP + IPC + IMAE, data = panel_coop,
                     model = "within", effect = "individual", na.action = na.omit)
 
   cat("\n========= EFECTOS FIJOS (INDIVIDUAL) - OTROS =========\n")
-  fe_otros_I6  <- plm(I6  ~ TPC + TBP + IPC + IMAE, data = panel_otros,
+  fe_otros_I6  = plm(I6  ~ TPC + TBP + IPC + IMAE, data = panel_otros,
                       model = "within", effect = "individual", na.action = na.omit)
-  fe_otros_I14 <- plm(I14 ~ TPC + TBP + IPC + IMAE, data = panel_otros,
+  fe_otros_I14 = plm(I14 ~ TPC + TBP + IPC + IMAE, data = panel_otros,
                       model = "within", effect = "individual", na.action = na.omit)
 
   # Resultados con errores estándar robustos (cluster por entidad)
@@ -183,77 +180,67 @@ const sourceCode = String.raw`
   print(coeftest(fe_otros_I14, vcov. = vcovHC(fe_otros_I14, type = "HC1", cluster = "group")))
 
 
-
-
-
-
-  #######======================================================================================================
   # HAUSMAN: FE vs RE Nota: esto es para evaluar que modelo Efectos fijos o aleatorios representa mejor el modelo
   library(plm)
 
-  dictamen_haus <- function(test) {
+  dictamen_haus = function(test) {
     if (is.null(test$p.value) || is.na(test$p.value)) return("p-valor no disponible")
     if (test$p.value < 0.05) "Prefiere FE (RE inconsistente)" else "Prefiere RE (exogeneidad plausible)"}
 
 
-  #H₀ (nula): RE es consistente (los efectos no observados de cada entidad no están correlacionados con los regresores). Si H₀ es cierta, RE es además más eficiente que FE.
-  #H₁ (alternativa): uno de los modelos es inconsistente (típicamente, RE), por correlación entre efectos no observados y regresores → preferir FE.
+  #H0 (nula): RE es consistente (los efectos no observados de cada entidad no están correlacionados con los regresores). Si H0 es cierta, RE es además más eficiente que FE
+  #H1 (alternativa): uno de los modelos es inconsistente (típicamente, RE), por correlación entre efectos no observados y regresores - preferir FE
   cat("\n================ HAUSMAN FE vs RE (phtest) ================\n")
 
   cat("\n--- COOPERATIVAS: I6 ---\n")
-  haus_coop_I6 <- phtest(fe_coop_I6,  modelo_coop_I6)
+  haus_coop_I6 = phtest(fe_coop_I6,  modelo_coop_I6)
   print(haus_coop_I6);  cat("Dictamen: ", dictamen_haus(haus_coop_I6),  "\n")
 
   cat("\n--- COOPERATIVAS: I14 ---\n")
-  haus_coop_I14 <- phtest(fe_coop_I14, modelo_coop_I14)
+  haus_coop_I14 = phtest(fe_coop_I14, modelo_coop_I14)
   print(haus_coop_I14); cat("Dictamen: ", dictamen_haus(haus_coop_I14), "\n")
 
   cat("\n--- OTROS: I6 ---\n")
-  haus_otros_I6 <- phtest(fe_otros_I6,  modelo_otros_I6)
+  haus_otros_I6 = phtest(fe_otros_I6,  modelo_otros_I6)
   print(haus_otros_I6);  cat("Dictamen: ", dictamen_haus(haus_otros_I6),  "\n")
 
   cat("\n--- OTROS: I14 ---\n")
-  haus_otros_I14 <- phtest(fe_otros_I14, modelo_otros_I14)
+  haus_otros_I14 = phtest(fe_otros_I14, modelo_otros_I14)
   print(haus_otros_I14); cat("Dictamen: ", dictamen_haus(haus_otros_I14), "\n")
 
 
-  ###############==============================================================================================
   #REVISION ROBUSTA PARAVER SIGNIFICANCIA DE PANEL 
   # Hay o no efecto panel? (RE vs pooled)
   plmtest(modelo_coop_I6,  type="honda") 
   plmtest(modelo_coop_I14, type="honda")
   plmtest(modelo_otros_I6, type="honda")
   plmtest(modelo_otros_I14,type="honda")
-  #Nota: explicacion Es un test LM (Honda) para saber si hay efectos de panel (individuales y/o de tiempo) o no.
-  #H0: no hay efectos pooled OLS basta.
-  #Si p < 0.05: hay efectos usa modelo de panel (RE o FE).
+  #Nota: explicacion Es un test LM (Honda) para saber si hay efectos de panel (individuales o de tiempo)
+  #H0: no hay efectos pooled OLS basta
+  #Si p < 0.05: hay efectos usa modelo de panel (RE o FE)
 
   #REVISION PARA VER SIGNIFICANCIA DE PANEL 
 
-  pool_coop_I6  <- plm(I6  ~ TPC + TBP + IPC + IMAE, data=panel_coop,  model="pooling")
+  pool_coop_I6  = plm(I6  ~ TPC + TBP + IPC + IMAE, data=panel_coop,  model="pooling")
   pFtest(fe_coop_I6, pool_coop_I6)
   # Nota (pFtest FE vs pooled):
   # H0: sin efectos por entidad (pooled suficiente).
-  # Resultado: F = 15.07 (df1 = 5, df2 = 572), p = 6.446e-14  -> Rechazo H0.
+  # Resultado: F = 15.07 (df1 = 5, df2 = 572), p = 6.446e-14  - Rechazo H0.
   # Conclusión: sí hay heterogeneidad entre entidades; pooled OLS no procede.
   #Si el resultado de esta prueba el Hausman es de p = 1, se usa RE.
 
 
-
-  #====================================================================================================
   #Errores robustos
   library(lmtest); library(sandwich)
   coeftest(modelo_coop_I6,  vcov=function(x) vcovHC(x, method="arellano", type="HC1", cluster="group"))
 
-
-  ##============================================================================================
   #Modelos con rezagos 
   library(plm)
   library(lmtest); library(sandwich)
 
   # Función corta para mostrar R²
-  print_r2 <- function(modelo, etiqueta) {
-    s <- summary(modelo)
+  print_r2 = function(modelo, etiqueta) {
+    s = summary(modelo)
     cat("\nR-cuadrado —", etiqueta, "\n")
     if (is.null(s$r.squared)) {
       cat("No disponible para este modelo.\n")
@@ -261,11 +248,9 @@ const sourceCode = String.raw`
       print(round(s$r.squared, 4))  # within / between / overall
     }
   }
-
-  #=============================================================================================================================
   # COOPERATIVAS (RE) 
   # I6 con solo lag 2 en cada explicativa
-  modelo_coop_I6_lag2 <- plm(
+  modelo_coop_I6_lag2 = plm(
     I6 ~ plm::lag(TPC, 4) + plm::lag(TBP, 6) + plm::lag(IPC, 9) + plm::lag(IMAE, 6),
     data = panel_coop, model = "random", na.action = na.omit
   )
@@ -273,7 +258,7 @@ const sourceCode = String.raw`
   coeftest(modelo_coop_I6_lag2, vcov = function(x) vcovHC(x, method="arellano", type="HC1", cluster="group"))
 
   # I14 con solo lag 2 en cada explicativa
-  modelo_coop_I14_lag2 <- plm(
+  modelo_coop_I14_lag2 = plm(
     I14 ~ plm::lag(TPC, 4) + plm::lag(TBP, 6) + plm::lag(IPC, 9) + plm::lag(IMAE, 6),
     data = panel_coop, model = "random", na.action = na.omit
   )
@@ -281,8 +266,6 @@ const sourceCode = String.raw`
   coeftest(modelo_coop_I14_lag2, vcov = function(x) vcovHC(x, method="arellano", type="HC1", cluster="group"))
 
 
-
-  #=============================================================================================================================
   #  OTROS (RE)
   # I6 con solo lag 2 en cada explicativa
   modelo_otros_I6_lag2 <- plm(
@@ -301,9 +284,6 @@ const sourceCode = String.raw`
   coeftest(modelo_otros_I14_lag2, vcov = function(x) vcovHC(x, method="arellano", type="HC1", cluster="group"))
 
 
-
-
-  ##============================================================================================
   # PRUEBAS DE LOS MODELOS
 
   #####Heterocedasticidad (Prueba de Breusch-Pagan modificada)
@@ -318,12 +298,11 @@ const sourceCode = String.raw`
   coeftest(modelo_otros_I6, vcov = vcovSCC(modelo_otros_I6))
   #Multicolinealidad (VIF
   # Modelo MCO para grupo "cooperativas" y cálculo de VIF
-  ols_model_coop <- lm(I6 ~ TPC + TBP + IPC, data = filter(panel_data, GRUPO == "COOPERATIVAS"))
+  ols_model_coop = lm(I6 ~ TPC + TBP + IPC, data = filter(panel_data, GRUPO == "COOPERATIVAS"))
   vif(ols_model_coop)
   # Modelo MCO para grupo "OTROS bancos " y cálculo de VIF
-  ols_model_otros <- lm(I6 ~ TPC + TBP + IPC, data = filter(panel_data, GRUPO == "OTROS"))
+  ols_model_otros = lm(I6 ~ TPC + TBP + IPC, data = filter(panel_data, GRUPO == "OTROS"))
   vif(ols_model_otros)
-
 `;
 
 const contents = [
